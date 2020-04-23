@@ -85,6 +85,61 @@ func (x *HealthCheckStatus) GetAppReleaseVer() string {
 	return ""
 }
 
+type Calculator struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	NumOne int32 `protobuf:"varint,1,opt,name=num_one,json=numOne,proto3" json:"num_one,omitempty"`
+	NumTwo int32 `protobuf:"varint,2,opt,name=num_two,json=numTwo,proto3" json:"num_two,omitempty"`
+}
+
+func (x *Calculator) Reset() {
+	*x = Calculator{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_basic_test_unary_api_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Calculator) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Calculator) ProtoMessage() {}
+
+func (x *Calculator) ProtoReflect() protoreflect.Message {
+	mi := &file_basic_test_unary_api_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Calculator.ProtoReflect.Descriptor instead.
+func (*Calculator) Descriptor() ([]byte, []int) {
+	return file_basic_test_unary_api_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Calculator) GetNumOne() int32 {
+	if x != nil {
+		return x.NumOne
+	}
+	return 0
+}
+
+func (x *Calculator) GetNumTwo() int32 {
+	if x != nil {
+		return x.NumTwo
+	}
+	return 0
+}
+
 //Request and Response Payload
 type HealthCheckStatusRequest struct {
 	state         protoimpl.MessageState
@@ -97,7 +152,7 @@ type HealthCheckStatusRequest struct {
 func (x *HealthCheckStatusRequest) Reset() {
 	*x = HealthCheckStatusRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_basic_test_unary_api_proto_msgTypes[1]
+		mi := &file_basic_test_unary_api_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -110,7 +165,7 @@ func (x *HealthCheckStatusRequest) String() string {
 func (*HealthCheckStatusRequest) ProtoMessage() {}
 
 func (x *HealthCheckStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_basic_test_unary_api_proto_msgTypes[1]
+	mi := &file_basic_test_unary_api_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -123,7 +178,7 @@ func (x *HealthCheckStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HealthCheckStatusRequest.ProtoReflect.Descriptor instead.
 func (*HealthCheckStatusRequest) Descriptor() ([]byte, []int) {
-	return file_basic_test_unary_api_proto_rawDescGZIP(), []int{1}
+	return file_basic_test_unary_api_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *HealthCheckStatusRequest) GetAppName() string {
@@ -144,7 +199,7 @@ type HealthCheckStatusResponse struct {
 func (x *HealthCheckStatusResponse) Reset() {
 	*x = HealthCheckStatusResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_basic_test_unary_api_proto_msgTypes[2]
+		mi := &file_basic_test_unary_api_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -157,7 +212,7 @@ func (x *HealthCheckStatusResponse) String() string {
 func (*HealthCheckStatusResponse) ProtoMessage() {}
 
 func (x *HealthCheckStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_basic_test_unary_api_proto_msgTypes[2]
+	mi := &file_basic_test_unary_api_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -170,7 +225,7 @@ func (x *HealthCheckStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HealthCheckStatusResponse.ProtoReflect.Descriptor instead.
 func (*HealthCheckStatusResponse) Descriptor() ([]byte, []int) {
-	return file_basic_test_unary_api_proto_rawDescGZIP(), []int{2}
+	return file_basic_test_unary_api_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *HealthCheckStatusResponse) GetHealthStatus() *HealthCheckStatus {
@@ -178,6 +233,100 @@ func (x *HealthCheckStatusResponse) GetHealthStatus() *HealthCheckStatus {
 		return x.HealthStatus
 	}
 	return nil
+}
+
+type CalculatorRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Payload *Calculator `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
+}
+
+func (x *CalculatorRequest) Reset() {
+	*x = CalculatorRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_basic_test_unary_api_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CalculatorRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CalculatorRequest) ProtoMessage() {}
+
+func (x *CalculatorRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_basic_test_unary_api_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CalculatorRequest.ProtoReflect.Descriptor instead.
+func (*CalculatorRequest) Descriptor() ([]byte, []int) {
+	return file_basic_test_unary_api_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CalculatorRequest) GetPayload() *Calculator {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
+type CalculatorResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result int32 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *CalculatorResponse) Reset() {
+	*x = CalculatorResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_basic_test_unary_api_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CalculatorResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CalculatorResponse) ProtoMessage() {}
+
+func (x *CalculatorResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_basic_test_unary_api_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CalculatorResponse.ProtoReflect.Descriptor instead.
+func (*CalculatorResponse) Descriptor() ([]byte, []int) {
+	return file_basic_test_unary_api_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CalculatorResponse) GetResult() int32 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
 }
 
 var File_basic_test_unary_api_proto protoreflect.FileDescriptor
@@ -191,6 +340,10 @@ var file_basic_test_unary_api_proto_rawDesc = []byte{
 	0x07, 0x61, 0x70, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x26, 0x0a, 0x0f, 0x61, 0x70, 0x70, 0x5f,
 	0x72, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x5f, 0x76, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x0d, 0x61, 0x70, 0x70, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x56, 0x65, 0x72,
+	0x22, 0x3e, 0x0a, 0x0a, 0x43, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x17,
+	0x0a, 0x07, 0x6e, 0x75, 0x6d, 0x5f, 0x6f, 0x6e, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x06, 0x6e, 0x75, 0x6d, 0x4f, 0x6e, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x6e, 0x75, 0x6d, 0x5f, 0x74,
+	0x77, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x6e, 0x75, 0x6d, 0x54, 0x77, 0x6f,
 	0x22, 0x35, 0x0a, 0x18, 0x48, 0x65, 0x61, 0x6c, 0x74, 0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x53,
 	0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x19, 0x0a, 0x08,
 	0x61, 0x70, 0x70, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
@@ -200,17 +353,31 @@ var file_basic_test_unary_api_proto_rawDesc = []byte{
 	0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x62, 0x61, 0x73,
 	0x69, 0x63, 0x5f, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x48, 0x65, 0x61, 0x6c, 0x74, 0x68, 0x43, 0x68,
 	0x65, 0x63, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x0c, 0x68, 0x65, 0x61, 0x6c, 0x74,
-	0x68, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x32, 0x7e, 0x0a, 0x18, 0x48, 0x65, 0x61, 0x6c, 0x74,
-	0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x12, 0x62, 0x0a, 0x11, 0x48, 0x65, 0x61, 0x6c, 0x74, 0x68, 0x43, 0x68, 0x65,
-	0x63, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x24, 0x2e, 0x62, 0x61, 0x73, 0x69, 0x63,
-	0x5f, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x48, 0x65, 0x61, 0x6c, 0x74, 0x68, 0x43, 0x68, 0x65, 0x63,
-	0x6b, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x25,
-	0x2e, 0x62, 0x61, 0x73, 0x69, 0x63, 0x5f, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x48, 0x65, 0x61, 0x6c,
-	0x74, 0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x17, 0x5a, 0x15, 0x62, 0x61, 0x73, 0x69, 0x63,
-	0x2d, 0x74, 0x65, 0x73, 0x74, 0x3b, 0x62, 0x61, 0x73, 0x69, 0x63, 0x5f, 0x74, 0x65, 0x73, 0x74,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x68, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x45, 0x0a, 0x11, 0x43, 0x61, 0x6c, 0x63, 0x75,
+	0x6c, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x30, 0x0a, 0x07,
+	0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e,
+	0x62, 0x61, 0x73, 0x69, 0x63, 0x5f, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x43, 0x61, 0x6c, 0x63, 0x75,
+	0x6c, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x22, 0x2c,
+	0x0a, 0x12, 0x43, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x32, 0x7e, 0x0a, 0x18,
+	0x48, 0x65, 0x61, 0x6c, 0x74, 0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x75,
+	0x73, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x62, 0x0a, 0x11, 0x48, 0x65, 0x61, 0x6c,
+	0x74, 0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x24, 0x2e,
+	0x62, 0x61, 0x73, 0x69, 0x63, 0x5f, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x48, 0x65, 0x61, 0x6c, 0x74,
+	0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x25, 0x2e, 0x62, 0x61, 0x73, 0x69, 0x63, 0x5f, 0x74, 0x65, 0x73, 0x74,
+	0x2e, 0x48, 0x65, 0x61, 0x6c, 0x74, 0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x53, 0x74, 0x61, 0x74,
+	0x75, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x32, 0x62, 0x0a, 0x11,
+	0x43, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x6f, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x12, 0x4d, 0x0a, 0x0a, 0x43, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x6f, 0x72, 0x12,
+	0x1d, 0x2e, 0x62, 0x61, 0x73, 0x69, 0x63, 0x5f, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x43, 0x61, 0x6c,
+	0x63, 0x75, 0x6c, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e,
+	0x2e, 0x62, 0x61, 0x73, 0x69, 0x63, 0x5f, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x43, 0x61, 0x6c, 0x63,
+	0x75, 0x6c, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00,
+	0x42, 0x17, 0x5a, 0x15, 0x62, 0x61, 0x73, 0x69, 0x63, 0x2d, 0x74, 0x65, 0x73, 0x74, 0x3b, 0x62,
+	0x61, 0x73, 0x69, 0x63, 0x5f, 0x74, 0x65, 0x73, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -225,21 +392,27 @@ func file_basic_test_unary_api_proto_rawDescGZIP() []byte {
 	return file_basic_test_unary_api_proto_rawDescData
 }
 
-var file_basic_test_unary_api_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_basic_test_unary_api_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_basic_test_unary_api_proto_goTypes = []interface{}{
 	(*HealthCheckStatus)(nil),         // 0: basic_test.HealthCheckStatus
-	(*HealthCheckStatusRequest)(nil),  // 1: basic_test.HealthCheckStatusRequest
-	(*HealthCheckStatusResponse)(nil), // 2: basic_test.HealthCheckStatusResponse
+	(*Calculator)(nil),                // 1: basic_test.Calculator
+	(*HealthCheckStatusRequest)(nil),  // 2: basic_test.HealthCheckStatusRequest
+	(*HealthCheckStatusResponse)(nil), // 3: basic_test.HealthCheckStatusResponse
+	(*CalculatorRequest)(nil),         // 4: basic_test.CalculatorRequest
+	(*CalculatorResponse)(nil),        // 5: basic_test.CalculatorResponse
 }
 var file_basic_test_unary_api_proto_depIdxs = []int32{
 	0, // 0: basic_test.HealthCheckStatusResponse.healthStatus:type_name -> basic_test.HealthCheckStatus
-	1, // 1: basic_test.HealthCheckStatusService.HealthCheckStatus:input_type -> basic_test.HealthCheckStatusRequest
-	2, // 2: basic_test.HealthCheckStatusService.HealthCheckStatus:output_type -> basic_test.HealthCheckStatusResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	1, // 1: basic_test.CalculatorRequest.payload:type_name -> basic_test.Calculator
+	2, // 2: basic_test.HealthCheckStatusService.HealthCheckStatus:input_type -> basic_test.HealthCheckStatusRequest
+	4, // 3: basic_test.CalculatorService.Calculator:input_type -> basic_test.CalculatorRequest
+	3, // 4: basic_test.HealthCheckStatusService.HealthCheckStatus:output_type -> basic_test.HealthCheckStatusResponse
+	5, // 5: basic_test.CalculatorService.Calculator:output_type -> basic_test.CalculatorResponse
+	4, // [4:6] is the sub-list for method output_type
+	2, // [2:4] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_basic_test_unary_api_proto_init() }
@@ -261,7 +434,7 @@ func file_basic_test_unary_api_proto_init() {
 			}
 		}
 		file_basic_test_unary_api_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HealthCheckStatusRequest); i {
+			switch v := v.(*Calculator); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -273,7 +446,43 @@ func file_basic_test_unary_api_proto_init() {
 			}
 		}
 		file_basic_test_unary_api_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*HealthCheckStatusRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_basic_test_unary_api_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*HealthCheckStatusResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_basic_test_unary_api_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CalculatorRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_basic_test_unary_api_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CalculatorResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -291,9 +500,9 @@ func file_basic_test_unary_api_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_basic_test_unary_api_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   6,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   2,
 		},
 		GoTypes:           file_basic_test_unary_api_proto_goTypes,
 		DependencyIndexes: file_basic_test_unary_api_proto_depIdxs,
@@ -381,6 +590,78 @@ var _HealthCheckStatusService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "HealthCheckStatus",
 			Handler:    _HealthCheckStatusService_HealthCheckStatus_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "basic-test/unary-api.proto",
+}
+
+// CalculatorServiceClient is the client API for CalculatorService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type CalculatorServiceClient interface {
+	Calculator(ctx context.Context, in *CalculatorRequest, opts ...grpc.CallOption) (*CalculatorResponse, error)
+}
+
+type calculatorServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCalculatorServiceClient(cc grpc.ClientConnInterface) CalculatorServiceClient {
+	return &calculatorServiceClient{cc}
+}
+
+func (c *calculatorServiceClient) Calculator(ctx context.Context, in *CalculatorRequest, opts ...grpc.CallOption) (*CalculatorResponse, error) {
+	out := new(CalculatorResponse)
+	err := c.cc.Invoke(ctx, "/basic_test.CalculatorService/Calculator", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CalculatorServiceServer is the server API for CalculatorService service.
+type CalculatorServiceServer interface {
+	Calculator(context.Context, *CalculatorRequest) (*CalculatorResponse, error)
+}
+
+// UnimplementedCalculatorServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCalculatorServiceServer struct {
+}
+
+func (*UnimplementedCalculatorServiceServer) Calculator(context.Context, *CalculatorRequest) (*CalculatorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Calculator not implemented")
+}
+
+func RegisterCalculatorServiceServer(s *grpc.Server, srv CalculatorServiceServer) {
+	s.RegisterService(&_CalculatorService_serviceDesc, srv)
+}
+
+func _CalculatorService_Calculator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CalculatorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CalculatorServiceServer).Calculator(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/basic_test.CalculatorService/Calculator",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CalculatorServiceServer).Calculator(ctx, req.(*CalculatorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _CalculatorService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "basic_test.CalculatorService",
+	HandlerType: (*CalculatorServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Calculator",
+			Handler:    _CalculatorService_Calculator_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

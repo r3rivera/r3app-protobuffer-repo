@@ -9,6 +9,11 @@ message HealthCheckStatus{
     string app_release_ver = 2;
 }
 
+message Calculator{
+    int32 num_one = 1;
+    int32 num_two = 2;
+}
+
 //Request and Response Payload
 message HealthCheckStatusRequest {
     string app_name = 1;
@@ -17,10 +22,23 @@ message HealthCheckStatusResponse{
     HealthCheckStatus healthStatus = 1;
 }
 
+message CalculatorRequest{
+    Calculator payload = 1;
+}
+
+message CalculatorResponse{
+    int32 result = 1;
+}
+
 //Service Definitions
 service HealthCheckStatusService{
     
     //Unary API
     rpc HealthCheckStatus(HealthCheckStatusRequest) returns (HealthCheckStatusResponse) {};
 
+}
+
+service CalculatorService{
+
+    rpc Calculator(CalculatorRequest) returns (CalculatorResponse) {};
 }
