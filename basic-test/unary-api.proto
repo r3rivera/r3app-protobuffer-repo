@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package basic_test;
+option go_package="basic-test;basic_test";
+
+//Data Structure
+message HealthCheckStatus{
+    string app_name = 1;
+    string app_release_ver = 2;
+}
+
+//Request and Response Payload
+message HealthCheckStatusRequest {
+    string app_name = 1;
+}
+message HealthCheckStatusResponse{
+    HealthCheckStatus healthStatus = 1;
+}
+
+//Service Definitions
+service HealthCheckStatusService{
+    
+    //Unary API
+    rpc HealthCheckStatus(HealthCheckStatusRequest) returns (HealthCheckStatusResponse) {};
+
+}
