@@ -30,7 +30,7 @@ message CalculatorResponse{
     int32 result = 1;
 }
 
-//Service Definitions
+//Service Definition Sections
 service HealthCheckStatusService{
     
     //Unary API
