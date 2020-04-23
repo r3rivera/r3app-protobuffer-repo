@@ -23,5 +23,9 @@ INSTALL GOLANG DEPENDENCIES
 https://marketplace.visualstudio.com/items?itemName=zxh404.vscode-proto3
 
 
-
+Note: Git tagging with version steps
+1. git add .
+2. git commit -m "message"
+3. git tag -a [version] -m "[version tagg message]"
+4. git push --tags
 
