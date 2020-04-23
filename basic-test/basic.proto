@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package greet;
+package basic_test;
 option go_package="basic-test;basic_test";
 
 // The greeting service definition.
