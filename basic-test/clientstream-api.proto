@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package basic_test;
+option go_package="basic-test;basic_test";
+
+//Protocol Buffer for a Client Streaming RPC
+//Use case are 1.) File Upload / Big Data push to server
+
+//Data Structure
+message DataUploadMessage {
+    string sender = 1;
+    string message = 2;
+}
+
+//Request and Response Payload
+message DataUploadMessageRequest{
+    string requester = 1;
+    string criteria = 2;
+}
+
+message DataUploadMessaResponse{
+    string statusCode = 1;
+}
+
+//Service Definition
+service DataUploadMessageService{
+
+    //Client-Streaming API
+    rpc DataUploadMessage(stream DataUploadMessageRequest) returns (DataUploadMessaResponse) {};
+
+}
