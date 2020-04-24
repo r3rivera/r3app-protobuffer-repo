@@ -14,8 +14,7 @@ message DataUploadMessage {
 
 //Request and Response Payload
 message DataUploadMessageRequest{
-    string requester = 1;
-    string criteria = 2;
+    DataUploadMessage payload = 1;
 }
 
 message DataUploadMessageResponse{
