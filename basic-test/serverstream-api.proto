@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package basic_test;
+option go_package="basic-test;basic_test";
+
+//Data Structure
+message NotificationMessage {
+    string sender = 1;
+    string message = 2;
+}
+
+//Request and Response Payload
+message NotificationMessageRequest{
+    string requester = 1;
+    string criteria = 2;
+}
+
+message NotificationMessageResponse{
+    string statusCode = 1;
+    NotificationMessage responsePayload = 2;
+}
+
+//Service Definition
+service NotificationMessageService{
+
+    //Server-Streaming API
+    rpc NotificationMessage(NotificationMessageRequest) returns (stream NotificationMessageResponse) {};
+
+}
