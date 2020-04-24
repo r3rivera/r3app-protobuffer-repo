@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package basic_test;
+option go_package="basic-test;basic_test";
+
+//Protocol Buffer for BI-Directional RPC
+//Use case are 1.) Chat Support 
+
+//Data Structure
+message ChatSupportMessage {
+    string sender = 1;
+    string receipient = 2;
+    string message = 3;
+}
+
+//Request and Response Payload
+message ChatSupportMessageRequest{
+    string chatId = 1;
+    ChatSupportMessage chatMessage = 2;
+}
+
+message ChatSupportMessageResponse{
+    string chatId = 1;
+    ChatSupportMessage chatMessage = 2;
+}
+
+//Service Definition
+service ChatSupportMessageService{
+
+    //Client-Streaming API
+    rpc ChatSupportMessage(stream ChatSupportMessageRequest) returns (stream ChatSupportMessageResponse) {};
+
+}

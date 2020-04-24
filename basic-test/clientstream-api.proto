@@ -18,7 +18,7 @@ message DataUploadMessageRequest{
     string criteria = 2;
 }
 
-message DataUploadMessaResponse{
+message DataUploadMessageResponse{
     string statusCode = 1;
 }
 
@@ -26,6 +26,6 @@ message DataUploadMessaResponse{
 service DataUploadMessageService{
 
     //Client-Streaming API
-    rpc DataUploadMessage(stream DataUploadMessageRequest) returns (DataUploadMessaResponse) {};
+    rpc DataUploadMessage(stream DataUploadMessageRequest) returns (DataUploadMessageResponse) {};
 
 }
