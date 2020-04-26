@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package message_post;
-option go_package="message-post;message_post";
+package messagepb;
+option go_package="messagepb";
 
 //Data Structure
 message MessagePost {

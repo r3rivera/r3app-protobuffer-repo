@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package basic_test;
-option go_package="basic-test;basic_test";
+package basicpb;
+option go_package="basicpb";
 
 //Data Structure
 message NotificationMessage {
