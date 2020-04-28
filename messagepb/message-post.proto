@@ -1,29 +1,69 @@
 syntax = "proto3";
 
 package messagepb;
-option go_package="messagepb";
+option go_package = "messagepb";
 
 //Data Structure
 message MessagePost {
-    string first_name = 1;
-    string last_name = 2;
-    string phone_number = 3;
-    string email = 4;
-    string message = 5;
+    string message_id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string phone_number = 4;
+    string email = 5;
+    string message = 6;
 }
 
 //Request and Response
-message MessagePostRequest {
+message CreateMessagePostRequest {
     MessagePost post = 1;
 }
 
-message MessagePostResponse{
+message CreateMessagePostResponse{
     string message_id = 1;
     int32 message_status = 2;
 }
 
+message ReadMessagePostRequest {
+    string message_id = 1;
+}
+
+message ReadMessagePostResponse {
+    MessagePost post = 1;
+    int32 message_status = 2;
+}
+
+message UpdateMessagePostRequest {
+    MessagePost post = 1;
+}
+
+message UpdateMessagePostResponse {
+    MessagePost post = 1;
+    int32 message_status = 2;
+}
+
+message DeleteMessagePostRequest {
+    string message_id = 1;
+}
+
+message DeleteMessagePostResponse {
+    int32 message_status = 1;
+}
+
+message ListMessagePostRequest {
+
+}
+
+message ListMessagePostResponse {
+    MessagePost post = 1;
+}
 
 // Service for handling BASIC unary for posting a message
 service MessagePostService {
-    rpc MessagePost(MessagePostRequest) returns (MessagePostResponse) {};
+
+    rpc CreateMessagePost(CreateMessagePostRequest) returns (CreateMessagePostResponse) {};
+    rpc ReadMessagePost(ReadMessagePostRequest) returns (ReadMessagePostResponse) {};
+    rpc UpdateMessagePost(UpdateMessagePostRequest) returns (UpdateMessagePostResponse) {};
+    rpc DeleteMessagePost(DeleteMessagePostRequest) returns (DeleteMessagePostResponse) {};
+    rpc ListMessagePost(ListMessagePostRequest) returns (stream ListMessagePostResponse) {};
+    
 }

@@ -35,11 +35,12 @@ type MessagePost struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FirstName   string `protobuf:"bytes,1,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName    string `protobuf:"bytes,2,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	PhoneNumber string `protobuf:"bytes,3,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
-	Email       string `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	Message     string `protobuf:"bytes,5,opt,name=message,proto3" json:"message,omitempty"`
+	MessageId   string `protobuf:"bytes,1,opt,name=message_id,json=messageId,proto3" json:"message_id,omitempty"`
+	FirstName   string `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName    string `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	PhoneNumber string `protobuf:"bytes,4,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	Email       string `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	Message     string `protobuf:"bytes,6,opt,name=message,proto3" json:"message,omitempty"`
 }
 
 func (x *MessagePost) Reset() {
@@ -72,6 +73,13 @@ func (x *MessagePost) ProtoReflect() protoreflect.Message {
 // Deprecated: Use MessagePost.ProtoReflect.Descriptor instead.
 func (*MessagePost) Descriptor() ([]byte, []int) {
 	return file_messagepb_message_post_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *MessagePost) GetMessageId() string {
+	if x != nil {
+		return x.MessageId
+	}
+	return ""
 }
 
 func (x *MessagePost) GetFirstName() string {
@@ -110,7 +118,7 @@ func (x *MessagePost) GetMessage() string {
 }
 
 //Request and Response
-type MessagePostRequest struct {
+type CreateMessagePostRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -118,8 +126,8 @@ type MessagePostRequest struct {
 	Post *MessagePost `protobuf:"bytes,1,opt,name=post,proto3" json:"post,omitempty"`
 }
 
-func (x *MessagePostRequest) Reset() {
-	*x = MessagePostRequest{}
+func (x *CreateMessagePostRequest) Reset() {
+	*x = CreateMessagePostRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_messagepb_message_post_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -127,13 +135,13 @@ func (x *MessagePostRequest) Reset() {
 	}
 }
 
-func (x *MessagePostRequest) String() string {
+func (x *CreateMessagePostRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MessagePostRequest) ProtoMessage() {}
+func (*CreateMessagePostRequest) ProtoMessage() {}
 
-func (x *MessagePostRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateMessagePostRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_messagepb_message_post_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -145,19 +153,19 @@ func (x *MessagePostRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MessagePostRequest.ProtoReflect.Descriptor instead.
-func (*MessagePostRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateMessagePostRequest.ProtoReflect.Descriptor instead.
+func (*CreateMessagePostRequest) Descriptor() ([]byte, []int) {
 	return file_messagepb_message_post_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *MessagePostRequest) GetPost() *MessagePost {
+func (x *CreateMessagePostRequest) GetPost() *MessagePost {
 	if x != nil {
 		return x.Post
 	}
 	return nil
 }
 
-type MessagePostResponse struct {
+type CreateMessagePostResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -166,8 +174,8 @@ type MessagePostResponse struct {
 	MessageStatus int32  `protobuf:"varint,2,opt,name=message_status,json=messageStatus,proto3" json:"message_status,omitempty"`
 }
 
-func (x *MessagePostResponse) Reset() {
-	*x = MessagePostResponse{}
+func (x *CreateMessagePostResponse) Reset() {
+	*x = CreateMessagePostResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_messagepb_message_post_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -175,13 +183,13 @@ func (x *MessagePostResponse) Reset() {
 	}
 }
 
-func (x *MessagePostResponse) String() string {
+func (x *CreateMessagePostResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MessagePostResponse) ProtoMessage() {}
+func (*CreateMessagePostResponse) ProtoMessage() {}
 
-func (x *MessagePostResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateMessagePostResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_messagepb_message_post_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -193,23 +201,406 @@ func (x *MessagePostResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MessagePostResponse.ProtoReflect.Descriptor instead.
-func (*MessagePostResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateMessagePostResponse.ProtoReflect.Descriptor instead.
+func (*CreateMessagePostResponse) Descriptor() ([]byte, []int) {
 	return file_messagepb_message_post_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MessagePostResponse) GetMessageId() string {
+func (x *CreateMessagePostResponse) GetMessageId() string {
 	if x != nil {
 		return x.MessageId
 	}
 	return ""
 }
 
-func (x *MessagePostResponse) GetMessageStatus() int32 {
+func (x *CreateMessagePostResponse) GetMessageStatus() int32 {
 	if x != nil {
 		return x.MessageStatus
 	}
 	return 0
+}
+
+type ReadMessagePostRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	MessageId string `protobuf:"bytes,1,opt,name=message_id,json=messageId,proto3" json:"message_id,omitempty"`
+}
+
+func (x *ReadMessagePostRequest) Reset() {
+	*x = ReadMessagePostRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messagepb_message_post_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ReadMessagePostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReadMessagePostRequest) ProtoMessage() {}
+
+func (x *ReadMessagePostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_messagepb_message_post_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReadMessagePostRequest.ProtoReflect.Descriptor instead.
+func (*ReadMessagePostRequest) Descriptor() ([]byte, []int) {
+	return file_messagepb_message_post_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ReadMessagePostRequest) GetMessageId() string {
+	if x != nil {
+		return x.MessageId
+	}
+	return ""
+}
+
+type ReadMessagePostResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Post          *MessagePost `protobuf:"bytes,1,opt,name=post,proto3" json:"post,omitempty"`
+	MessageStatus int32        `protobuf:"varint,2,opt,name=message_status,json=messageStatus,proto3" json:"message_status,omitempty"`
+}
+
+func (x *ReadMessagePostResponse) Reset() {
+	*x = ReadMessagePostResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messagepb_message_post_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ReadMessagePostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReadMessagePostResponse) ProtoMessage() {}
+
+func (x *ReadMessagePostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_messagepb_message_post_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReadMessagePostResponse.ProtoReflect.Descriptor instead.
+func (*ReadMessagePostResponse) Descriptor() ([]byte, []int) {
+	return file_messagepb_message_post_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ReadMessagePostResponse) GetPost() *MessagePost {
+	if x != nil {
+		return x.Post
+	}
+	return nil
+}
+
+func (x *ReadMessagePostResponse) GetMessageStatus() int32 {
+	if x != nil {
+		return x.MessageStatus
+	}
+	return 0
+}
+
+type UpdateMessagePostRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Post *MessagePost `protobuf:"bytes,1,opt,name=post,proto3" json:"post,omitempty"`
+}
+
+func (x *UpdateMessagePostRequest) Reset() {
+	*x = UpdateMessagePostRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messagepb_message_post_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateMessagePostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateMessagePostRequest) ProtoMessage() {}
+
+func (x *UpdateMessagePostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_messagepb_message_post_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateMessagePostRequest.ProtoReflect.Descriptor instead.
+func (*UpdateMessagePostRequest) Descriptor() ([]byte, []int) {
+	return file_messagepb_message_post_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateMessagePostRequest) GetPost() *MessagePost {
+	if x != nil {
+		return x.Post
+	}
+	return nil
+}
+
+type UpdateMessagePostResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Post          *MessagePost `protobuf:"bytes,1,opt,name=post,proto3" json:"post,omitempty"`
+	MessageStatus int32        `protobuf:"varint,2,opt,name=message_status,json=messageStatus,proto3" json:"message_status,omitempty"`
+}
+
+func (x *UpdateMessagePostResponse) Reset() {
+	*x = UpdateMessagePostResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messagepb_message_post_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateMessagePostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateMessagePostResponse) ProtoMessage() {}
+
+func (x *UpdateMessagePostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_messagepb_message_post_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateMessagePostResponse.ProtoReflect.Descriptor instead.
+func (*UpdateMessagePostResponse) Descriptor() ([]byte, []int) {
+	return file_messagepb_message_post_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UpdateMessagePostResponse) GetPost() *MessagePost {
+	if x != nil {
+		return x.Post
+	}
+	return nil
+}
+
+func (x *UpdateMessagePostResponse) GetMessageStatus() int32 {
+	if x != nil {
+		return x.MessageStatus
+	}
+	return 0
+}
+
+type DeleteMessagePostRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	MessageId string `protobuf:"bytes,1,opt,name=message_id,json=messageId,proto3" json:"message_id,omitempty"`
+}
+
+func (x *DeleteMessagePostRequest) Reset() {
+	*x = DeleteMessagePostRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messagepb_message_post_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteMessagePostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteMessagePostRequest) ProtoMessage() {}
+
+func (x *DeleteMessagePostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_messagepb_message_post_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteMessagePostRequest.ProtoReflect.Descriptor instead.
+func (*DeleteMessagePostRequest) Descriptor() ([]byte, []int) {
+	return file_messagepb_message_post_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeleteMessagePostRequest) GetMessageId() string {
+	if x != nil {
+		return x.MessageId
+	}
+	return ""
+}
+
+type DeleteMessagePostResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	MessageStatus int32 `protobuf:"varint,1,opt,name=message_status,json=messageStatus,proto3" json:"message_status,omitempty"`
+}
+
+func (x *DeleteMessagePostResponse) Reset() {
+	*x = DeleteMessagePostResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messagepb_message_post_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteMessagePostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteMessagePostResponse) ProtoMessage() {}
+
+func (x *DeleteMessagePostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_messagepb_message_post_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteMessagePostResponse.ProtoReflect.Descriptor instead.
+func (*DeleteMessagePostResponse) Descriptor() ([]byte, []int) {
+	return file_messagepb_message_post_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DeleteMessagePostResponse) GetMessageStatus() int32 {
+	if x != nil {
+		return x.MessageStatus
+	}
+	return 0
+}
+
+type ListMessagePostRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ListMessagePostRequest) Reset() {
+	*x = ListMessagePostRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messagepb_message_post_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListMessagePostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMessagePostRequest) ProtoMessage() {}
+
+func (x *ListMessagePostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_messagepb_message_post_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMessagePostRequest.ProtoReflect.Descriptor instead.
+func (*ListMessagePostRequest) Descriptor() ([]byte, []int) {
+	return file_messagepb_message_post_proto_rawDescGZIP(), []int{9}
+}
+
+type ListMessagePostResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Post *MessagePost `protobuf:"bytes,1,opt,name=post,proto3" json:"post,omitempty"`
+}
+
+func (x *ListMessagePostResponse) Reset() {
+	*x = ListMessagePostResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messagepb_message_post_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListMessagePostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMessagePostResponse) ProtoMessage() {}
+
+func (x *ListMessagePostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_messagepb_message_post_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMessagePostResponse.ProtoReflect.Descriptor instead.
+func (*ListMessagePostResponse) Descriptor() ([]byte, []int) {
+	return file_messagepb_message_post_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListMessagePostResponse) GetPost() *MessagePost {
+	if x != nil {
+		return x.Post
+	}
+	return nil
 }
 
 var File_messagepb_message_post_proto protoreflect.FileDescriptor
@@ -217,35 +608,98 @@ var File_messagepb_message_post_proto protoreflect.FileDescriptor
 var file_messagepb_message_post_proto_rawDesc = []byte{
 	0x0a, 0x1c, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2f, 0x6d, 0x65, 0x73, 0x73,
 	0x61, 0x67, 0x65, 0x2d, 0x70, 0x6f, 0x73, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x09,
-	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x22, 0x9c, 0x01, 0x0a, 0x0b, 0x4d, 0x65,
-	0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x66, 0x69, 0x72,
-	0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x66,
-	0x69, 0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x6c, 0x61, 0x73, 0x74,
-	0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6c, 0x61, 0x73,
-	0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x5f, 0x6e,
-	0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x68, 0x6f,
-	0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69,
-	0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x18,
-	0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x40, 0x0a, 0x12, 0x4d, 0x65, 0x73, 0x73,
-	0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2a,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x22, 0xbb, 0x01, 0x0a, 0x0b, 0x4d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x6d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x66, 0x69, 0x72, 0x73,
+	0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x66, 0x69,
+	0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x6c, 0x61, 0x73, 0x74, 0x5f,
+	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6c, 0x61, 0x73, 0x74,
+	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x5f, 0x6e, 0x75,
+	0x6d, 0x62, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x68, 0x6f, 0x6e,
+	0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x18, 0x0a,
+	0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x46, 0x0a, 0x18, 0x43, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x2a, 0x0a, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x16, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x4d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x22,
+	0x61, 0x0a, 0x19, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1d, 0x0a, 0x0a,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x09, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x49, 0x64, 0x12, 0x25, 0x0a, 0x0e, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x0d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x53, 0x74, 0x61, 0x74,
+	0x75, 0x73, 0x22, 0x37, 0x0a, 0x16, 0x52, 0x65, 0x61, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x0a,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x09, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x49, 0x64, 0x22, 0x6c, 0x0a, 0x17, 0x52,
+	0x65, 0x61, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2a, 0x0a, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62,
+	0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x04, 0x70, 0x6f,
+	0x73, 0x74, 0x12, 0x25, 0x0a, 0x0e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x74,
+	0x61, 0x74, 0x75, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0d, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x46, 0x0a, 0x18, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2a, 0x0a, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e,
+	0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x04, 0x70, 0x6f, 0x73,
+	0x74, 0x22, 0x6e, 0x0a, 0x19, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2a,
 	0x0a, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x6d,
 	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x50, 0x6f, 0x73, 0x74, 0x52, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x22, 0x5b, 0x0a, 0x13, 0x4d, 0x65,
-	0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x69, 0x64, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x49, 0x64,
-	0x12, 0x25, 0x0a, 0x0e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x74, 0x61, 0x74,
-	0x75, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
-	0x65, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x32, 0x64, 0x0a, 0x12, 0x4d, 0x65, 0x73, 0x73, 0x61,
-	0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x4e, 0x0a,
-	0x0b, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x1d, 0x2e, 0x6d,
-	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x6d, 0x65,
-	0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50,
-	0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x0b, 0x5a,
-	0x09, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x50, 0x6f, 0x73, 0x74, 0x52, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x12, 0x25, 0x0a, 0x0e, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x0d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x53, 0x74, 0x61, 0x74, 0x75,
+	0x73, 0x22, 0x39, 0x0a, 0x18, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a,
+	0x0a, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x09, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x49, 0x64, 0x22, 0x42, 0x0a, 0x19,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x0e, 0x6d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x0d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
+	0x22, 0x18, 0x0a, 0x16, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50,
+	0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x45, 0x0a, 0x17, 0x4c, 0x69,
+	0x73, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2a, 0x0a, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e,
+	0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x04, 0x70, 0x6f, 0x73,
+	0x74, 0x32, 0xf4, 0x03, 0x0a, 0x12, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73,
+	0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x60, 0x0a, 0x11, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x23, 0x2e,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x24, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x5a, 0x0a, 0x0f, 0x52, 0x65,
+	0x61, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x21, 0x2e,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x4d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x22, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x52, 0x65, 0x61,
+	0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x60, 0x0a, 0x11, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x23, 0x2e, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x24, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x60, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65,
+	0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x23, 0x2e,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
+	0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x24, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x44,
+	0x65, 0x6c, 0x65, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x5c, 0x0a, 0x0f, 0x4c, 0x69,
+	0x73, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x21, 0x2e,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x22, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x70, 0x62, 0x2e, 0x4c, 0x69, 0x73,
+	0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x30, 0x01, 0x42, 0x0b, 0x5a, 0x09, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -260,21 +714,41 @@ func file_messagepb_message_post_proto_rawDescGZIP() []byte {
 	return file_messagepb_message_post_proto_rawDescData
 }
 
-var file_messagepb_message_post_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_messagepb_message_post_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_messagepb_message_post_proto_goTypes = []interface{}{
-	(*MessagePost)(nil),         // 0: messagepb.MessagePost
-	(*MessagePostRequest)(nil),  // 1: messagepb.MessagePostRequest
-	(*MessagePostResponse)(nil), // 2: messagepb.MessagePostResponse
+	(*MessagePost)(nil),               // 0: messagepb.MessagePost
+	(*CreateMessagePostRequest)(nil),  // 1: messagepb.CreateMessagePostRequest
+	(*CreateMessagePostResponse)(nil), // 2: messagepb.CreateMessagePostResponse
+	(*ReadMessagePostRequest)(nil),    // 3: messagepb.ReadMessagePostRequest
+	(*ReadMessagePostResponse)(nil),   // 4: messagepb.ReadMessagePostResponse
+	(*UpdateMessagePostRequest)(nil),  // 5: messagepb.UpdateMessagePostRequest
+	(*UpdateMessagePostResponse)(nil), // 6: messagepb.UpdateMessagePostResponse
+	(*DeleteMessagePostRequest)(nil),  // 7: messagepb.DeleteMessagePostRequest
+	(*DeleteMessagePostResponse)(nil), // 8: messagepb.DeleteMessagePostResponse
+	(*ListMessagePostRequest)(nil),    // 9: messagepb.ListMessagePostRequest
+	(*ListMessagePostResponse)(nil),   // 10: messagepb.ListMessagePostResponse
 }
 var file_messagepb_message_post_proto_depIdxs = []int32{
-	0, // 0: messagepb.MessagePostRequest.post:type_name -> messagepb.MessagePost
-	1, // 1: messagepb.MessagePostService.MessagePost:input_type -> messagepb.MessagePostRequest
-	2, // 2: messagepb.MessagePostService.MessagePost:output_type -> messagepb.MessagePostResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0,  // 0: messagepb.CreateMessagePostRequest.post:type_name -> messagepb.MessagePost
+	0,  // 1: messagepb.ReadMessagePostResponse.post:type_name -> messagepb.MessagePost
+	0,  // 2: messagepb.UpdateMessagePostRequest.post:type_name -> messagepb.MessagePost
+	0,  // 3: messagepb.UpdateMessagePostResponse.post:type_name -> messagepb.MessagePost
+	0,  // 4: messagepb.ListMessagePostResponse.post:type_name -> messagepb.MessagePost
+	1,  // 5: messagepb.MessagePostService.CreateMessagePost:input_type -> messagepb.CreateMessagePostRequest
+	3,  // 6: messagepb.MessagePostService.ReadMessagePost:input_type -> messagepb.ReadMessagePostRequest
+	5,  // 7: messagepb.MessagePostService.UpdateMessagePost:input_type -> messagepb.UpdateMessagePostRequest
+	7,  // 8: messagepb.MessagePostService.DeleteMessagePost:input_type -> messagepb.DeleteMessagePostRequest
+	9,  // 9: messagepb.MessagePostService.ListMessagePost:input_type -> messagepb.ListMessagePostRequest
+	2,  // 10: messagepb.MessagePostService.CreateMessagePost:output_type -> messagepb.CreateMessagePostResponse
+	4,  // 11: messagepb.MessagePostService.ReadMessagePost:output_type -> messagepb.ReadMessagePostResponse
+	6,  // 12: messagepb.MessagePostService.UpdateMessagePost:output_type -> messagepb.UpdateMessagePostResponse
+	8,  // 13: messagepb.MessagePostService.DeleteMessagePost:output_type -> messagepb.DeleteMessagePostResponse
+	10, // 14: messagepb.MessagePostService.ListMessagePost:output_type -> messagepb.ListMessagePostResponse
+	10, // [10:15] is the sub-list for method output_type
+	5,  // [5:10] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_messagepb_message_post_proto_init() }
@@ -296,7 +770,7 @@ func file_messagepb_message_post_proto_init() {
 			}
 		}
 		file_messagepb_message_post_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MessagePostRequest); i {
+			switch v := v.(*CreateMessagePostRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -308,7 +782,103 @@ func file_messagepb_message_post_proto_init() {
 			}
 		}
 		file_messagepb_message_post_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MessagePostResponse); i {
+			switch v := v.(*CreateMessagePostResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messagepb_message_post_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ReadMessagePostRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messagepb_message_post_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ReadMessagePostResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messagepb_message_post_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateMessagePostRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messagepb_message_post_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateMessagePostResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messagepb_message_post_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteMessagePostRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messagepb_message_post_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteMessagePostResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messagepb_message_post_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListMessagePostRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messagepb_message_post_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListMessagePostResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -326,7 +896,7 @@ func file_messagepb_message_post_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_messagepb_message_post_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -352,7 +922,11 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MessagePostServiceClient interface {
-	MessagePost(ctx context.Context, in *MessagePostRequest, opts ...grpc.CallOption) (*MessagePostResponse, error)
+	CreateMessagePost(ctx context.Context, in *CreateMessagePostRequest, opts ...grpc.CallOption) (*CreateMessagePostResponse, error)
+	ReadMessagePost(ctx context.Context, in *ReadMessagePostRequest, opts ...grpc.CallOption) (*ReadMessagePostResponse, error)
+	UpdateMessagePost(ctx context.Context, in *UpdateMessagePostRequest, opts ...grpc.CallOption) (*UpdateMessagePostResponse, error)
+	DeleteMessagePost(ctx context.Context, in *DeleteMessagePostRequest, opts ...grpc.CallOption) (*DeleteMessagePostResponse, error)
+	ListMessagePost(ctx context.Context, in *ListMessagePostRequest, opts ...grpc.CallOption) (MessagePostService_ListMessagePostClient, error)
 }
 
 type messagePostServiceClient struct {
@@ -363,48 +937,198 @@ func NewMessagePostServiceClient(cc grpc.ClientConnInterface) MessagePostService
 	return &messagePostServiceClient{cc}
 }
 
-func (c *messagePostServiceClient) MessagePost(ctx context.Context, in *MessagePostRequest, opts ...grpc.CallOption) (*MessagePostResponse, error) {
-	out := new(MessagePostResponse)
-	err := c.cc.Invoke(ctx, "/messagepb.MessagePostService/MessagePost", in, out, opts...)
+func (c *messagePostServiceClient) CreateMessagePost(ctx context.Context, in *CreateMessagePostRequest, opts ...grpc.CallOption) (*CreateMessagePostResponse, error) {
+	out := new(CreateMessagePostResponse)
+	err := c.cc.Invoke(ctx, "/messagepb.MessagePostService/CreateMessagePost", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
+func (c *messagePostServiceClient) ReadMessagePost(ctx context.Context, in *ReadMessagePostRequest, opts ...grpc.CallOption) (*ReadMessagePostResponse, error) {
+	out := new(ReadMessagePostResponse)
+	err := c.cc.Invoke(ctx, "/messagepb.MessagePostService/ReadMessagePost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *messagePostServiceClient) UpdateMessagePost(ctx context.Context, in *UpdateMessagePostRequest, opts ...grpc.CallOption) (*UpdateMessagePostResponse, error) {
+	out := new(UpdateMessagePostResponse)
+	err := c.cc.Invoke(ctx, "/messagepb.MessagePostService/UpdateMessagePost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *messagePostServiceClient) DeleteMessagePost(ctx context.Context, in *DeleteMessagePostRequest, opts ...grpc.CallOption) (*DeleteMessagePostResponse, error) {
+	out := new(DeleteMessagePostResponse)
+	err := c.cc.Invoke(ctx, "/messagepb.MessagePostService/DeleteMessagePost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *messagePostServiceClient) ListMessagePost(ctx context.Context, in *ListMessagePostRequest, opts ...grpc.CallOption) (MessagePostService_ListMessagePostClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_MessagePostService_serviceDesc.Streams[0], "/messagepb.MessagePostService/ListMessagePost", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &messagePostServiceListMessagePostClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type MessagePostService_ListMessagePostClient interface {
+	Recv() (*ListMessagePostResponse, error)
+	grpc.ClientStream
+}
+
+type messagePostServiceListMessagePostClient struct {
+	grpc.ClientStream
+}
+
+func (x *messagePostServiceListMessagePostClient) Recv() (*ListMessagePostResponse, error) {
+	m := new(ListMessagePostResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // MessagePostServiceServer is the server API for MessagePostService service.
 type MessagePostServiceServer interface {
-	MessagePost(context.Context, *MessagePostRequest) (*MessagePostResponse, error)
+	CreateMessagePost(context.Context, *CreateMessagePostRequest) (*CreateMessagePostResponse, error)
+	ReadMessagePost(context.Context, *ReadMessagePostRequest) (*ReadMessagePostResponse, error)
+	UpdateMessagePost(context.Context, *UpdateMessagePostRequest) (*UpdateMessagePostResponse, error)
+	DeleteMessagePost(context.Context, *DeleteMessagePostRequest) (*DeleteMessagePostResponse, error)
+	ListMessagePost(*ListMessagePostRequest, MessagePostService_ListMessagePostServer) error
 }
 
 // UnimplementedMessagePostServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedMessagePostServiceServer struct {
 }
 
-func (*UnimplementedMessagePostServiceServer) MessagePost(context.Context, *MessagePostRequest) (*MessagePostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagePost not implemented")
+func (*UnimplementedMessagePostServiceServer) CreateMessagePost(context.Context, *CreateMessagePostRequest) (*CreateMessagePostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateMessagePost not implemented")
+}
+func (*UnimplementedMessagePostServiceServer) ReadMessagePost(context.Context, *ReadMessagePostRequest) (*ReadMessagePostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadMessagePost not implemented")
+}
+func (*UnimplementedMessagePostServiceServer) UpdateMessagePost(context.Context, *UpdateMessagePostRequest) (*UpdateMessagePostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMessagePost not implemented")
+}
+func (*UnimplementedMessagePostServiceServer) DeleteMessagePost(context.Context, *DeleteMessagePostRequest) (*DeleteMessagePostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteMessagePost not implemented")
+}
+func (*UnimplementedMessagePostServiceServer) ListMessagePost(*ListMessagePostRequest, MessagePostService_ListMessagePostServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListMessagePost not implemented")
 }
 
 func RegisterMessagePostServiceServer(s *grpc.Server, srv MessagePostServiceServer) {
 	s.RegisterService(&_MessagePostService_serviceDesc, srv)
 }
 
-func _MessagePostService_MessagePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MessagePostRequest)
+func _MessagePostService_CreateMessagePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateMessagePostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MessagePostServiceServer).MessagePost(ctx, in)
+		return srv.(MessagePostServiceServer).CreateMessagePost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/messagepb.MessagePostService/MessagePost",
+		FullMethod: "/messagepb.MessagePostService/CreateMessagePost",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MessagePostServiceServer).MessagePost(ctx, req.(*MessagePostRequest))
+		return srv.(MessagePostServiceServer).CreateMessagePost(ctx, req.(*CreateMessagePostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
+}
+
+func _MessagePostService_ReadMessagePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadMessagePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MessagePostServiceServer).ReadMessagePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/messagepb.MessagePostService/ReadMessagePost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MessagePostServiceServer).ReadMessagePost(ctx, req.(*ReadMessagePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MessagePostService_UpdateMessagePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateMessagePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MessagePostServiceServer).UpdateMessagePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/messagepb.MessagePostService/UpdateMessagePost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MessagePostServiceServer).UpdateMessagePost(ctx, req.(*UpdateMessagePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MessagePostService_DeleteMessagePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteMessagePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MessagePostServiceServer).DeleteMessagePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/messagepb.MessagePostService/DeleteMessagePost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MessagePostServiceServer).DeleteMessagePost(ctx, req.(*DeleteMessagePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MessagePostService_ListMessagePost_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListMessagePostRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(MessagePostServiceServer).ListMessagePost(m, &messagePostServiceListMessagePostServer{stream})
+}
+
+type MessagePostService_ListMessagePostServer interface {
+	Send(*ListMessagePostResponse) error
+	grpc.ServerStream
+}
+
+type messagePostServiceListMessagePostServer struct {
+	grpc.ServerStream
+}
+
+func (x *messagePostServiceListMessagePostServer) Send(m *ListMessagePostResponse) error {
+	return x.ServerStream.SendMsg(m)
 }
 
 var _MessagePostService_serviceDesc = grpc.ServiceDesc{
@@ -412,10 +1136,28 @@ var _MessagePostService_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MessagePostServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "MessagePost",
-			Handler:    _MessagePostService_MessagePost_Handler,
+			MethodName: "CreateMessagePost",
+			Handler:    _MessagePostService_CreateMessagePost_Handler,
+		},
+		{
+			MethodName: "ReadMessagePost",
+			Handler:    _MessagePostService_ReadMessagePost_Handler,
+		},
+		{
+			MethodName: "UpdateMessagePost",
+			Handler:    _MessagePostService_UpdateMessagePost_Handler,
+		},
+		{
+			MethodName: "DeleteMessagePost",
+			Handler:    _MessagePostService_DeleteMessagePost_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "ListMessagePost",
+			Handler:       _MessagePostService_ListMessagePost_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "messagepb/message-post.proto",
 }
